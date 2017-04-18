@@ -451,6 +451,21 @@ OP-TEE to be able to initialize at all. The loader supplies in `r0/x0` the
 address of the first byte following what was not copied and jumps to the load
 address to start OP-TEE.
 
+A newer version 2 header is defined for loaders which defines load address and
+size of each part in code:
+```c
+struct optee_header_v2 {
+        uint32_t magic;
+        uint8_t version;
+        uint8_t arch;
+        uint16_t reserved;
+};
+```
+
+Unnecessary members are removed from header. Magic number and architecture are
+identical as original. Version is increased to 2 and make one reserved member
+for alignment and future usage.
+
 ## Initializing the pager
 The pager is initialized as early as possible during boot in order to minimize
 the "init" area. The global variable `tee_mm_vcore` describes the virtual memory
