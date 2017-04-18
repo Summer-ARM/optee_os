@@ -219,6 +219,9 @@ $(link-out-dir)/tee.bin: $(link-out-dir)/tee-pager.bin \
 		--init_mem_usage `cat $(link-out-dir)/tee-init_mem_usage.txt` \
 		--tee_pager_bin $(link-out-dir)/tee-pager.bin \
 		--tee_pageable_bin $(link-out-dir)/tee-pageable.bin \
+		--tee_header_v2_out $(link-out-dir)/tee-header-v2.bin\
+		--tee_pager_v2_out $(link-out-dir)/tee-pager-v2.bin\
+		--tee_pageable_v2_out $(link-out-dir)/tee-pageable-v2.bin\
 		--out $@
 
 
