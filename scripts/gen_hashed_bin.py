@@ -42,7 +42,6 @@ def write_header(outf, init_size, args, paged_size):
 		magic, version, arch_id[args.arch], args.flags, init_size, \
 		args.init_load_addr_hi, args.init_load_addr_lo, \
 		args.init_mem_usage, paged_size))
-	
 
 def append_to(outf, start_offs, in_fname, max_bytes=0xffffffff):
 	#print "Appending %s@0x%x 0x%x bytes at position 0x%x" % \
