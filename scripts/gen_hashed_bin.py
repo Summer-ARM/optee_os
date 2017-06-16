@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright (c) 2014-2017, Linaro Limited
+# Copyright (c) 2014, Linaro Limited
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -42,12 +42,6 @@ def write_header(outf, init_size, args, paged_size):
 		magic, version, arch_id[args.arch], args.flags, init_size, \
 		args.init_load_addr_hi, args.init_load_addr_lo, \
 		args.init_mem_usage, paged_size))
-
-def write_header_v2(outf, args):
-	magic = 0x4554504f # 'OPTE'
-	version = 2;
-	outf.write(struct.pack('<IBBH', \
-		magic, version, arch_id[args.arch], 0))
 
 def append_to(outf, start_offs, in_fname, max_bytes=0xffffffff):
 	#print "Appending %s@0x%x 0x%x bytes at position 0x%x" % \
@@ -125,18 +119,6 @@ def get_args():
 		required=True, type=argparse.FileType('wb'), \
 		help='The output tee.bin')
 
-	parser.add_argument('--tee_header_v2_out', \
-		required=True, type=argparse.FileType('wb'), \
-		help='The output tee-header-v2.bin')
-
-	parser.add_argument('--tee_pager_v2_out', \
-		required=True, type=argparse.FileType('wb'), \
-		help='The output tee-pager-v2.bin')
-
-	parser.add_argument('--tee_pageable_v2_out', \
-		required=True, type=argparse.FileType('wb'), \
-		help='The output tee-pageable-v2.bin')
-
 	return parser.parse_args();
 
 def main():
@@ -160,23 +142,6 @@ def main():
 	write_header(outf, init_size, args, paged_size)
 
 	outf.close()
-
-        #generate tee-header-v2.bin
-	header_v2_outf	   = args.tee_header_v2_out
-	write_header_v2(header_v2_outf, args)
-	header_v2_outf.close()
-
-        #generate tee-pager-v2.bin
-	tee_pager_v2_outf  = args.tee_pager_v2_out
-	append_to(tee_pager_v2_outf, 0, tee_pager_fname)
-        append_to(tee_pager_v2_outf, 0, tee_pageable_fname, init_bin_size)
-        append_hashes(tee_pager_v2_outf, tee_pageable_fname)
-	tee_pager_v2_outf.close()
-
-        #generate tee-pageable-v2.bin
-	tee_pageable_v2_outf	 = args.tee_pageable_v2_out
-	append_to(tee_pageable_v2_outf, init_bin_size, tee_pageable_fname)
-	tee_pageable_v2_outf.close()
 
 if __name__ == "__main__":
 	main()

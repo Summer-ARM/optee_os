@@ -219,11 +219,28 @@ $(link-out-dir)/tee.bin: $(link-out-dir)/tee-pager.bin \
 		--init_mem_usage `cat $(link-out-dir)/tee-init_mem_usage.txt` \
 		--tee_pager_bin $(link-out-dir)/tee-pager.bin \
 		--tee_pageable_bin $(link-out-dir)/tee-pageable.bin \
-		--tee_header_v2_out $(link-out-dir)/tee-header-v2.bin\
-		--tee_pager_v2_out $(link-out-dir)/tee-pager-v2.bin\
-		--tee_pageable_v2_out $(link-out-dir)/tee-pageable-v2.bin\
 		--out $@
 
+all: $(link-out-dir)/tee-header-v2.bin
+cleanfiles += $(link-out-dir)/tee-header-v2.bin
+$(link-out-dir)/tee-header-v2.bin: $(link-out-dir)/tee.bin
+	./scripts/split_hashed_bin.py \
+		--in_file $< \
+		--out_header_v2 $@
+
+all: $(link-out-dir)/tee-pager-v2.bin
+cleanfiles += $(link-out-dir)/tee-pager-v2.bin
+$(link-out-dir)/tee-pager-v2.bin: $(link-out-dir)/tee.bin
+	./scripts/split_hashed_bin.py \
+		--in_file $< \
+		--out_pager_v2 $@
+
+all: $(link-out-dir)/tee-pageable-v2.bin
+cleanfiles += $(link-out-dir)/tee-pageable-v2.bin
+$(link-out-dir)/tee-pageable-v2.bin: $(link-out-dir)/tee.bin
+	./scripts/split_hashed_bin.py \
+		--in_file $< \
+		--out_pageable_v2 $@
 
 all: $(link-out-dir)/tee.symb_sizes
 cleanfiles += $(link-out-dir)/tee.symb_sizes

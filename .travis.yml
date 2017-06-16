@@ -171,57 +171,57 @@ script:
   - $make PLATFORM=vexpress-qemu_armv8a CFG_ARM64_core=y CFG_RPMB_FS=y
   - $make PLATFORM=vexpress-qemu_armv8a CFG_ARM64_core=y CFG_TA_GPROF_SUPPORT=y CFG_ULIBS_GPROF=y
 
-  # SUNXI(Allwinner A80)
-  - $make PLATFORM=sunxi CFG_TEE_CORE_LOG_LEVEL=4 DEBUG=1
-  - $make PLATFORM=sunxi CFG_TEE_CORE_LOG_LEVEL=0 CFG_TEE_TA_LOG_LEVEL=0 DEBUG=0
+  ## SUNXI(Allwinner A80)
+  #- $make PLATFORM=sunxi CFG_TEE_CORE_LOG_LEVEL=4 DEBUG=1
+  #- $make PLATFORM=sunxi CFG_TEE_CORE_LOG_LEVEL=0 CFG_TEE_TA_LOG_LEVEL=0 DEBUG=0
 
-  # HiKey board (HiSilicon Kirin 620)
-  - $make PLATFORM=hikey
-  - $make PLATFORM=hikey CFG_ARM64_core=y
-  - $make PLATFORM=hikey CFG_ARM64_core=y CFG_TEE_TA_LOG_LEVEL=4 DEBUG=1
+  ## HiKey board (HiSilicon Kirin 620)
+  #- $make PLATFORM=hikey
+  #- $make PLATFORM=hikey CFG_ARM64_core=y
+  #- $make PLATFORM=hikey CFG_ARM64_core=y CFG_TEE_TA_LOG_LEVEL=4 DEBUG=1
 
-  # Mediatek mt8173 EVB
-  - $make PLATFORM=mediatek-mt8173 CFG_ARM64_core=y
+  ## Mediatek mt8173 EVB
+  #- $make PLATFORM=mediatek-mt8173 CFG_ARM64_core=y
 
-  # i.MX6UL 14X14 EVK
-  - $make PLATFORM=imx-mx6ulevk ARCH=arm CFG_PAGEABLE_ADDR=0 CFG_NS_ENTRY_ADDR=0x80800000 CFG_DT_ADDR=0x83000000 CFG_DT=y DEBUG=y CFG_TEE_CORE_LOG_LEVEL=4
+  ## i.MX6UL 14X14 EVK
+  #- $make PLATFORM=imx-mx6ulevk ARCH=arm CFG_PAGEABLE_ADDR=0 CFG_NS_ENTRY_ADDR=0x80800000 CFG_DT_ADDR=0x83000000 CFG_DT=y DEBUG=y CFG_TEE_CORE_LOG_LEVEL=4
 
-  # i.MX6Quad SABRE
-  - $make PLATFORM=imx-mx6qsabrelite
-  - $make PLATFORM=imx-mx6qsabresd
-  - $make PLATFORM=imx-mx6dlsabresd
+  ## i.MX6Quad SABRE
+  #- $make PLATFORM=imx-mx6qsabrelite
+  #- $make PLATFORM=imx-mx6qsabresd
+  #- $make PLATFORM=imx-mx6dlsabresd
 
-  # Texas Instruments DRA7xx
-  - $make PLATFORM=ti-dra7xx
+  ## Texas Instruments DRA7xx
+  #- $make PLATFORM=ti-dra7xx
 
-  # Texas Instruments AM57xx
-  - $make PLATFORM=ti-am57xx
+  ## Texas Instruments AM57xx
+  #- $make PLATFORM=ti-am57xx
 
-  # Texas Instruments AM43xx
-  - $make PLATFORM=ti-am43xx
+  ## Texas Instruments AM43xx
+  #- $make PLATFORM=ti-am43xx
 
-  # Spreadtrum sc9860
-  - $make PLATFORM=sprd-sc9860
-  - $make PLATFORM=sprd-sc9860 CFG_ARM64_core=y
+  ## Spreadtrum sc9860
+  #- $make PLATFORM=sprd-sc9860
+  #- $make PLATFORM=sprd-sc9860 CFG_ARM64_core=y
 
-  # FSL ls1021a
-  - $make PLATFORM=ls-ls1021atwr
-  - $make PLATFORM=ls-ls1021aqds
+  ## FSL ls1021a
+  #- $make PLATFORM=ls-ls1021atwr
+  #- $make PLATFORM=ls-ls1021aqds
 
-  # Xilinx Zynq7000 ZC702
-  - $make PLATFORM=zynq7k-zc702
+  ## Xilinx Zynq7000 ZC702
+  #- $make PLATFORM=zynq7k-zc702
 
-  # Xilinx ZynqMP
-  - $make PLATFORM=zynqmp-zcu102
-  - $make PLATFORM=zynqmp-zcu102 CFG_ARM64_core=y
+  ## Xilinx ZynqMP
+  #- $make PLATFORM=zynqmp-zcu102
+  #- $make PLATFORM=zynqmp-zcu102 CFG_ARM64_core=y
 
-  # HiSilicon D02
-  - $make PLATFORM=d02
-  - $make PLATFORM=d02 CFG_ARM64_core=y
+  ## HiSilicon D02
+  #- $make PLATFORM=d02
+  #- $make platform=d02 cfg_arm64_core=y
 
   # Renesas RCAR H3
-  - $make PLATFORM=rcar
-  - $make PLATFORM=rcar CFG_ARM64_core=y
+  #- $make PLATFORM=rcar
+  #- $make PLATFORM=rcar CFG_ARM64_core=y
 
   # Raspberry Pi 3
   - $make PLATFORM=rpi3
